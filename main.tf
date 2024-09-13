@@ -3,10 +3,11 @@ provider "aws" {
 }
 
 resource "aws_instance" "example" {
-  ami           = "ami-0e53db6fd757e38c7"  # Specify an appropriate AMI ID
-  instance_type = "t2.micro"
+  ami           = var.ami_id # Specify an appropriate AMI ID
+  instance_type = var.shirhsa_instacnce_type
   subnet_id     = "subnet-0809dd414ab855aa6"  # Ensure the subnet ID is in quotes
   key_name      = "krupakar_new"
+  security_groups = var.security_groups
 
   tags = {
     Name = "example-instance"  # Add a tag for easier identification
